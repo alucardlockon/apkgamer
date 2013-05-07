@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocations">
+			<list>
+				<value>classpath:hibernate/cfg/hibernate.cfg.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="apkAction" class="com.hyn.web.action.ApkAction">
+		<property name="apkBiz" ref="apkBizImpl"></property>
+		<property name="commentBiz" ref="commentBizImpl"></property>
+	</bean>
+	<bean id="showAction" class="com.hyn.web.action.ShowAction">
+	</bean>
+	<bean id="registAction" class="com.hyn.web.action.RegistAction">
+		<property name="userBiz" ref="userBizImpl"></property>
+	</bean>
+	<bean id="loginAction" class="com.hyn.web.action.LoginAction">
+		<property name="userBiz" ref="userBizImpl"></property>
+	</bean>
+	<bean id="apkBizImpl" class="com.hyn.biz.impl.ApkBizImpl">
+		<property name="apkDao" ref="apkDaoImpl"></property>
+	</bean>
+	<bean id="commentBizImpl" class="com.hyn.biz.impl.CommentBizImpl">
+		<property name="commentDao" ref="commentDaoImpl"></property>
+	</bean>
+	<bean id="userBizImpl" class="com.hyn.biz.impl.UserBizImpl">
+		<property name="userDao" ref="userDaoImpl"></property>
+	</bean>
+	<bean id="apkDaoImpl" class="com.hyn.dao.impl.ApkDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="commentDaoImpl" class="com.hyn.dao.impl.CommentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="userDaoImpl" class="com.hyn.dao.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+</beans>

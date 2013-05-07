@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+	<!-- 项目公共信息 -->
+<struts>
+	<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<constant name="struts.i18n.reload" value="true"></constant>
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<package name="ssh-default" extends="struts-default">
+		<default-action-ref name="apkAction"></default-action-ref>
+		<global-results>
+			<result name="error">/commons/error.jsp</result>
+		</global-results>
+		<action name="apkAction" class="apkAction">
+			<result name="list">/WEB-INF/index.jsp</result>
+			<result name="detail">/WEB-INF/detailall.jsp</result>
+			<result name="search">/WEB-INF/allserach.jsp</result>
+			<result name="comment">/WEB-INF/detailall.jsp
+			</result>
+		</action>
+		<action name="registAction" class="registAction">
+			<result name="toreg">/WEB-INF/regist.jsp</result>
+			<result name="success">/WEB-INF/verify.jsp</result>
+			<result name="verifysuc">/WEB-INF/verifysuc.jsp</result>
+		</action>
+		<action name="loginAction" class="loginAction">
+			<result name="tolog">/WEB-INF/login.jsp</result>
+			<result type="chain" name="login">
+				<param name="namespace">/</param>
+				<param name="actionName">newsAction</param>
+			</result>
+		</action>
+		<action name="showAction" class="showAction">
+			<result name="list">/WEB-INF/list.jsp</result>
+			<result name="rightlist">/WEB-INF/rightlist.jsp</result>
+			<result name="detail">/WEB-INF/detail.jsp</result>
+			<result name="serach">/WEB-INF/serach.jsp</result>
+		</action>
+	</package>
+</struts>    

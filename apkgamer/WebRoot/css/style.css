@@ -1,0 +1,18 @@
+a:active {
+	text-decoration: underline;
+	color: #A6C53B;
+}
+
+a:link {
+	text-decoration: none;
+	color: #A6C53B;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #A6C53B;
+}
+/*regist*/
+#registtable {
+	border: 1
+}
